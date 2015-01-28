@@ -59,10 +59,22 @@
                         <a class="page-scroll" href="#services">Who we are</a>
                     </li>
                     <li>
-                        <a class="page-scroll" href="#contact">Sing Up</a>
+                        <a class="page-scroll" href="#contact">Sign Up</a>
                     </li>
-                    <li>
-                        <a class="page-scroll" href="">Log In</a>
+                    <li class="dropdown" id="menuLogin">
+                        <a class="dropdown-toggle" href="#" data-toggle="dropdown" id="navLogin">Login</a>
+                        <div class="dropdown-menu" >
+                            <form class="form" id="formLogin"> 
+                                <input class="form-group" name="username" id="username" type="text" placeholder="Username"> 
+                                <input class="form-group" name="password" id="password" type="password" placeholder="Password"><br>
+                                <div class="col-md-4"></div>
+                                <div class="col-md-4"></div>
+                                <div class="col-md-4">
+                                    <button type="button" id="btnLogin" class="btnLogin">Login</button>
+                                </div>
+                                
+                            </form>
+                        </div>
                     </li>
                 </ul>
             </div>
@@ -122,7 +134,7 @@
                             <div class="clearfix"></div>
                             <div class="col-lg-12 text-center">
                                 <div id="success"></div>
-                                <button type="submit" class="btn btn-xl">Sing up</button>
+                                <button type="submit" class="btn btn-xl">Sign up</button>
                             </div>
                         </div>
                     </form>
