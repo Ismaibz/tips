@@ -1,0 +1,114 @@
+<?php
+
+// Datos de la conexiÃ³n (shh!! they are top secret)
+include ("data.inc");
+// Variables globales
+$link = null;
+
+function _db_connect_install ()
+{
+	global $link;
+	
+	$link = mysqli_connect (_DB_HOST, _DB_USER, _DB_PASS)
+		or die ('Could not connect: ' . mysql_error ());
+	
+	return $link;
+}
+// Conecta con el servidor y selecciona la base de datos
+function _db_connect ()
+{
+	global $link;
+	
+	$link = mysqli_connect (_DB_HOST, _DB_USER, _DB_PASS)
+		or die ('Could not connect: ' . mysql_error ());
+	mysqli_select_db ($link,_DB_DATABASE) or die ('Could not select database');
+	
+	
+	return $link;
+}
+
+
+// Cierra la conexiÃ³n con el servidor
+function _db_close ()
+{
+	global $link;
+	
+	mysqli_close ($link);
+}
+
+
+// Realiza una consulta a la base de datos
+function _db_query ($query)
+{
+	global $link;
+	
+	
+	$result = mysqli_query ($link,$query) or die('Query failed: ' . mysqli_error($link));
+	
+	return $result;
+}
+
+
+function _db_multi_query ($query)
+{
+	global $link;
+	
+	mysqli_multi_query ($link,$query) or die('Query failed: ' . mysqli_error($link));
+	$result = mysqli_store_result($link);
+	return $result;
+}
+
+// Libera una consulta
+function _db_free ($result)
+{
+	mysqli_free_result ($result);
+}
+
+
+// Obtiene cada fila de la consulta y avanza el puntero en el recurso
+function _db_num_rows ($result)
+{
+	return mysqli_num_rows ($result);
+}
+
+
+// Obtiene cada fila de la consulta y avanza el puntero en el recurso
+function _db_fetch_array ($result)
+{
+	return mysqli_fetch_array ($result, MYSQL_ASSOC);
+}
+
+
+// Mueve el puntero interno a la posiciÃ³n deseada
+function _db_data_seek ($result, $pos)
+{
+	$num_rows = mysqli_num_rows ($result);
+	if ($num_rows == 0 || $pos >= $num_rows)
+		return;
+	
+	return mysqli_data_seek ($result, $pos);
+}
+
+
+function mysqli_clean_connection() 
+{ 
+	while(mysqli_more_results($link)) 
+	{ 
+		if(mysqli_next_result($link)) 
+		{ 
+			$result = mysqli_use_result($link); 
+			mysql_free_result($result); 
+		} 
+	} 
+}
+
+function _mysqli_free($result)
+{
+	while (mysqli_next_result($link))
+	{
+		mysqli_more_results($link);
+	}
+}
+
+
+?>

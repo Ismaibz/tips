@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<translations>
+    <translation id="navLogin">
+        <english>Login</english>
+        <spanish>Iniciar Sesion</spanish>
+    </translation>
+    <translation id="SignUp">
+        <english>SignUp</english>
+        <spanish>Registrate</spanish>
+    </translation>
+    <translation id="SignUpBtn">
+        <english>SignUp</english>
+        <spanish>Registrate</spanish>
+    </translation>
+</translations>

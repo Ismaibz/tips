@@ -9,6 +9,8 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
+    <script src="js/user.js"></script>
+
     <title>NBA Tip Star Boys</title>
 
     <!-- Bootstrap Core CSS -->
@@ -30,8 +32,47 @@
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
+     <!-- jQuery -->
+    <script src="js/jquery.js"></script>
+
+    <script type="text/javascript" language="javascript">
+		function readXml(lang) {
+            
+			var language = lang;		    
+		    console.log( "lang" );
+		    $.ajax({
+		            type: "GET",
+    				url: "http://localhost/language.xml",
+    				dataType: "xml",
+		        success: function(xml) {
+		            $(xml).find('translation').each(function(){
+		                var id = $(this).attr('id');
+		                var text = $(this).find(language).text();
+		                document.getElementById(id).innerHTML = text;
+		            });
+		        }
+		    });
+		};
+	</script>
+
+	<script type="text/javascript" language="javascript"> 
+       
+        $( document ).ready(function() {
+            if (localStorage.id != null){
+                window.location.href = "main.html";
+            }    
+        });
+        
+		function spanish(){readXml("spanish");};
+		function english(){readXml("english");};
+	</script>
+
+
+
+}
 
 </head>
+
 
 <body id="page-top" class="index">
 
@@ -59,7 +100,7 @@
                         <a class="page-scroll" href="#services">Who we are</a>
                     </li>
                     <li>
-                        <a class="page-scroll" href="#contact">Sign Up</a>
+                        <a id="SignUp" class="page-scroll" href="#contact">Sign Up</a>
                     </li>
                     <li class="dropdown" id="menuLogin">
                         <a class="dropdown-toggle" href="#" data-toggle="dropdown" id="navLogin">Login</a>
@@ -70,11 +111,16 @@
                                 <div class="col-md-4"></div>
                                 <div class="col-md-4"></div>
                                 <div class="col-md-4">
-                                    <button type="button" id="btnLogin" class="btnLogin">Login</button>
+                                    <button type="button" id="btnLogin" class="btnLogin" onclick="login()"/>Login</button>
                                 </div>
                                 
                             </form>
                         </div>
+                    </li>
+                    <li>
+                    
+                        <button id="SpanishBtn" type="button"  onclick="spanish()"></button>
+                        <button id="EnglishBtn" type="button"  onclick="english()"></button>
                     </li>
                 </ul>
             </div>
@@ -106,7 +152,10 @@
                     </div>
                     <div class="col-md-4"></div>
                 </div>
-                <div><p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit.Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit.Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit.Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit.Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit.Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit.</p></div>
+                <div><p id="text-muted">Somos un grupo de estudiosos del baloncesto y profesionales del mundo de las apuestas. Tras varios años de estudio y de disfrutar del deporte en directo, y al ver el beneficio obtenido gracias a ello, pretendemos compartir nuestra metodología con la gente para poder ganar todos juntos.
+Con trabajo y paciencia, os ayudaremos a convertiros en todos unos ganadores. Os enseñaremos a llevar un buen control de vuestro bank roll y de cómo gestionar vuestras apuestas con cabeza, resolviendo cualquier duda con asesoramiento personal.
+Además, comentaremos un poco la actualidad de la NBA, incluyendo las picks diarias que consideremos óptimas para el funcionamiento de una gráfica muy positiva.
+No pierdas la oportunidad de sumar con nosotros, juntos, seremos grandes, y nos divertiremos apostando</p></div>
         </div>
     </section>
 
@@ -120,21 +169,21 @@
                         <div class="row">
                             
                                 <div class="form-group">
-                                    <input type="text" class="form-control" placeholder="Your Email *" id="name" required data-validation-required-message="Please enter your email address.">
+                                    <input type="text" class="form-control" placeholder="Your Email *" id="regEmail" required data-validation-required-message="Please enter your email address.">
                                     <p class="help-block text-danger"></p>
                                 </div>
                                 <div class="form-group">
-                                    <input type="email" class="form-control" placeholder="Your Password *" id="email" required data-validation-required-message="Please enter your password.">
+                                    <input type="password" class="form-control" placeholder="Your Password *" id="regPass" required data-validation-required-message="Please enter your password.">
                                     <p class="help-block text-danger"></p>
                                 </div>
                                 <div class="form-group">
-                                    <input type="tel" class="form-control" placeholder="Repeat Password *" id="phone" required data-validation-required-message="Please repeat your password.">
+                                    <input type="password" class="form-control" placeholder="Repeat Password *" id="regPass2" required data-validation-required-message="Please repeat your password.">
                                     <p class="help-block text-danger"></p>
                                 </div>
                             <div class="clearfix"></div>
                             <div class="col-lg-12 text-center">
-                                <div id="success"></div>
-                                <button type="submit" class="btn btn-xl">Sign up</button>
+                                <p id="success"></p>
+                                <button id="SignUpBtn" type="submit" class="btn btn-xl" onclick="register()"/>Sign up</button>
                             </div>
                         </div>
                     </form>
@@ -171,8 +220,7 @@
         </div>
     </footer>
 
-    <!-- jQuery -->
-    <script src="js/jquery.js"></script>
+   
 
     <!-- Bootstrap Core JavaScript -->
     <script src="js/bootstrap.min.js"></script>

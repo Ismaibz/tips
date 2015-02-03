@@ -129,7 +129,9 @@ fieldset[disabled] .btn-primary.active {
     background-color: #87CEEB;
 }
 
-.btn-xl:hover,
+.btn-xl:hover{
+ border-color: #000;
+}
 .btn-xl:focus,
 .btn-xl:active,
 .btn-xl.active,
@@ -220,13 +222,15 @@ fieldset[disabled] .btn-xl.active {
 
 .navbar-default .navbar-nav>.active>a {
     border-radius: 0;
-    color: #fff;
+    border-color: #000;
+    color: #000;
     background-color: #87CEEB;
 }
 
 .navbar-default .navbar-nav>.active>a:hover,
 .navbar-default .navbar-nav>.active>a:focus {
-    color: #fff;
+	border-color: #000;
+    color: #000;
     background-color: #87CEEB;
 }
 
@@ -245,6 +249,10 @@ fieldset[disabled] .btn-xl.active {
         -webkit-transition: all .3s;
         -moz-transition: all .3s;
         transition: all .3s;
+    }
+
+    .navbar-default .navbar-brand:hover {
+		color: #87CEEB;
     }
 
     .navbar-default .navbar-nav>.active>a {
@@ -344,7 +352,7 @@ section h3.section-subheading {
 
 @media(min-width:768px) {
     section {
-        padding: 120px 0;
+        padding: 100px 0px 120px 0px;
     }
 }
 
@@ -424,6 +432,11 @@ section#contact:-ms-input-placeholder {
 }
 
 section#contact .text-danger {
+    background-color: #e74c3c;
+    color: #000;
+}
+
+#success {
     background-color: #e74c3c;
     color: #000;
 }
@@ -518,12 +531,28 @@ body {
 }
 
 #menuLogin .form-group{
+	padding: 10px;
  	border-color: #87CEEB;
  	border-radius: 5px;
     box-shadow: none;
 }
 
 .navbar-default .navbar-nav>.open>a, .navbar-default .navbar-nav>.open>a:focus, .navbar-default .navbar-nav>.open>a:hover {
-	color: #fff;
+	color: #000;
     background-color: #87CEEB;
+}
+
+#SpanishBtn{
+    height: 18px;
+    width: 25px;
+    border-radius: 5px;
+    background-image: url(../img/Spanish.gif);
+}
+
+#EnglishBtn{
+ 
+    height: 18px;
+    width: 25px;
+    border-radius: 5px;
+    background-image: url(../img/English.gif);
 }
